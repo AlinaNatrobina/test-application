@@ -25,7 +25,6 @@ export const getAddressName = address => {
  * @param {object} relationships
  */
 export const getPersonName = relationships => {
-  debugger;
   const { first_name, last_name, middle_name } = relationships;
   return `${last_name} ${first_name.substring(0, 1)}.${middle_name.substring(0,1)}.`;
 };
