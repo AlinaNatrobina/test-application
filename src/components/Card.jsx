@@ -5,8 +5,6 @@ import { getSecondTitle, getAddressName, getPersonName } from "utils/common";
 import like from "assets/icons/like.svg";
 import star from "assets/icons/star.svg";
 import photo from "assets/room.jpg";
-import InteractiveIcon from "./InteractiveIcon";
-import CardWrapper from "./CardWrapper";
 
 /**
  * Карточка квартиры
@@ -36,7 +34,25 @@ export default ({ info = {}, add, remove, isFavorite }) => {
   );
 };
 
+const CardWrapper = styled.div`
+  position: relative;
+  background: #fff;
+  border-radius: 8px;
+  flex-grow: 1;
+  flex-basis: 270px;
+  min-width: 270px;
+  max-width: 400px;
+  transition: all 0.1s;
+  filter: ${({ isFavorite }) =>
+    isFavorite
+      ? "drop-shadow(0px 0px 10px rgba(26, 103, 26, 0.5))"
+      : "drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.08))"};
 
+  img:first-child {
+    width: 100%;
+    border-radius: 6px 6px 0px 0px;
+  }
+`;
 const CardInfo = styled.div`
   padding: 20px 30px 30px;
 
@@ -72,6 +88,19 @@ const Desc = styled.div`
 `;
 const AddressDesc = styled(Desc)`
   height: 2.5em;
+`;
+const InteractiveIcon = styled.img`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  cursor: pointer;
+  transition: all 0.1s;
+  :hover {
+    width: 40px;
+    top: 8px;
+    right: 8px;
+  }
 `;
 
 const TextOverflow = css`
